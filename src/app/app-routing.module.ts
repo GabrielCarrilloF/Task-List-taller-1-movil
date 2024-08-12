@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'form-add',
+    loadChildren: () => import('./form-add/form-add.module').then( m => m.FormAddPageModule)
+  },
 ];
 
 @NgModule({

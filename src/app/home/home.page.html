@@ -1,22 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Gabriel Carrillo Florez
-    </ion-title>
+    <div  class="div-ion-toolbar">
+      <ion-title class="ion-title">Task List</ion-title>
+        <ion-fab-button [routerLink]="['/form-add']">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <h1>Soy Gabo.Dev();</h1>
-    <ion-input placeholder="Title"></ion-input>
-    <ion-input placeholder="Description"></ion-input>
-    <ion-input placeholder="Done"></ion-input>
-  </div>
+  <h1 class="title">My Task List</h1>
+  <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>11/08/2024 10:52</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content> Card Content </ion-card-content>
+  </ion-card>
 </ion-content>

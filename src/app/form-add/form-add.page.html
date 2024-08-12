@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Task List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <h1 class="title">New Task</h1>
+    <form [formGroup]="formAdd" (ngSubmit)="save()">
+      <ion-row>
+        <ion-col size="12">
+          
+          <ion-input formControlName="title" placeholder="Title" inputmode="text" autocapitalize="on" ></ion-input>
+
+          <div *ngFor="let error of titleExceptionMessage.title">
+            <ng-container *ngIf="title?.hasError(error.type) && (title?.dirty || title?.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>  
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          
+          <ion-input formControlName="description" placeholder="Drescription" inputmode="text" autocapitalize></ion-input>
+          
+          <div *ngFor="let error of descriptionExceptionMessage.description">
+            <ng-container *ngIf="description?.hasError(error.type) && (description?.dirty || description?.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>  
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-select placeholder="Select a Color" value="blue" formControlName="color">
+            <div slot="label">Choose a color: </div>
+            <ion-select-option value="primary">blue</ion-select-option>
+            <ion-select-option value="secondary">dark blue</ion-select-option>
+            <ion-select-option value="tertiary">ligth blue</ion-select-option>
+            <ion-select-option value="success">green</ion-select-option>
+            <ion-select-option value="warning">orange</ion-select-option>
+            <ion-select-option value="danger">red</ion-select-option>
+            <ion-select-option value="light">light</ion-select-option>
+          </ion-select> 
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="danger" expand="block" shape="round" [routerLink]="['/home']">
+            Cancel
+          </ion-button>
+          
+        </ion-col>
+        
+        <ion-col size="6">
+          <ion-button [disabled]="!formAdd.valid" expand="block" type="submit" shape="round">Save</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+  <hr>
+  <br>
+
+  <ion-card [color]="colorValue">
+  <ion-card-header>
+    <ion-card-title>{{ titleValue || 'Card Title' }}</ion-card-title>
+    <ion-card-subtitle>{{ currentDate }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>{{ descriptionValue || 'Card Content' }}</ion-card-content>
+</ion-card>
+
+</ion-content>
