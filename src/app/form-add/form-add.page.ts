@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PageInformationService  } from '../services/page-information.service';
+
 
 @Component({
   selector: 'app-form-add',
@@ -44,24 +47,27 @@ export class FormAddPage implements OnInit {
     description: ['', [Validators.required, Validators.minLength(10)]],
     color: ['']
   });
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private pageInformation: PageInformationService 
+  ) { }
 
   public save(){
 
     const formData = {
       title: this.formAdd.value.title,
       description: this.formAdd.value.description,
+      currentDate: this.currentDate,
       color: this.formAdd.value.color,
       done: false 
     };
 
     this.items.push(formData);
 
-
-    console.log(this.items);
-
-    // Puedes resetear el formulario si lo deseas después de guardar
     this.formAdd.reset();
+    this.pageInformation.senObjectSouces(this.items);
+    this.router.navigate(['/home']);
   }
   
 

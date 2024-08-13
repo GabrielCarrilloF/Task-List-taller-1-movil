@@ -11,12 +11,20 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="title">My Task List</h1>
-  <ion-card color="secondary">
+
+  <!-- Mostrar las cartas solo si hay datos -->
+<ng-container *ngIf="data.length > 0; else noDataTemplate">
+  <app-card-task *ngFor="let datas of data" [datas]="datas"></app-card-task>
+</ng-container>
+
+<!-- Mostrar un mensaje u otra carta cuando no haya datos -->
+<ng-template #noDataTemplate>
+  <ion-card>
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>11/08/2024 10:52</ion-card-subtitle>
+      <ion-card-title>No hay datos disponibles</ion-card-title>
     </ion-card-header>
-  
-    <ion-card-content> Card Content </ion-card-content>
+    <ion-card-content>Por favor, agrega nuevos datos para verlos aquí.</ion-card-content>
   </ion-card>
+</ng-template>
+
 </ion-content>
