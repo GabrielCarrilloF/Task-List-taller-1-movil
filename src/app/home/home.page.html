@@ -17,14 +17,13 @@
   <app-card-task *ngFor="let datas of data" [datas]="datas"></app-card-task>
 </ng-container>
 
-<!-- Mostrar un mensaje u otra carta cuando no haya datos -->
-<ng-template #noDataTemplate>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>No hay datos disponibles</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>Por favor, agrega nuevos datos para verlos aquí.</ion-card-content>
-  </ion-card>
+
+<ng-template #noDataTemplate class="ion-text-center" >
+  <div id="container">
+    <h2 class="empty-tasks__title">Nothing here yet!</h2>
+    <img class="empty-tasks__img" src="../../assets/empty-tasks.png" alt="">
+    <p class="empty-tasks__praf">It seems that you have no pending tasks at the moment. Relax or Add new tasks to keep your day productive</p>
+  </div>
 </ng-template>
 
 </ion-content>

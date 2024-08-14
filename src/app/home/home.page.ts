@@ -16,12 +16,14 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.pageInformation.$getObjectSouces.subscribe(data => {
-      if (!Array.isArray(data)) {
-        this.data = [data];
-      } else {
+      if (Array.isArray(data) && data.length > 0) {
         this.data = data;
+      } else {
+        this.data = []; 
       }
     });
+
+    this.pageInformation.senObjectSouces(this.data);
   }
 
 }

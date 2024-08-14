@@ -65,6 +65,8 @@ export class FormAddPage implements OnInit {
 
     this.items.push(formData);
 
+    console.log(this.items);
+
     this.formAdd.reset();
     this.pageInformation.senObjectSouces(this.items);
     this.router.navigate(['/home']);
@@ -72,6 +74,13 @@ export class FormAddPage implements OnInit {
   
 
   ngOnInit() {
+    this.pageInformation.$getObjectSouces.subscribe(items => {
+      if (Array.isArray(items) && items.length > 0) {
+        this.items = items;
+      } else {
+        this.items = []; 
+      }
+    });
     this.formAdd.valueChanges.subscribe(values => {
       this.titleValue = values.title || '';
       this.descriptionValue = values.description || ''; 
